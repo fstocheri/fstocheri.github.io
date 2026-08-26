@@ -2,18 +2,21 @@ export const projects = [
   {
     slug: 'greenstock',
     name: 'GreenStock',
-    pitch: 'A Laravel inventory pipeline for a plant nursery, built from scratch.',
+    pitch: 'A live Laravel inventory pipeline for a plant nursery, built from scratch.',
     description:
-      'A from-scratch demo of a nursery/garden-supply inventory system, built to show a ' +
+      'A from-scratch demo of a nursery/garden-supply inventory system, showing a ' +
       'Laravel ETL pipeline, database schema design, and a Vue 3 + Inertia front end, ' +
-      'end to end.',
-    tech: ['Laravel', 'PHP', 'Vue 3', 'Inertia.js', 'SQLite', 'Chart.js'],
+      'end to end — deployed as a real, publicly reachable demo rather than a localhost-only project.',
+    tech: ['Laravel', 'PHP', 'Vue 3', 'Inertia.js', 'PostgreSQL', 'Chart.js', 'Docker'],
     repoUrl: 'https://github.com/ftocheri/greenstock',
+    liveUrl: 'https://greenstock-ztvq.onrender.com',
     thumbnail: '/projects/greenstock/dashboard.png',
     screenshots: [
+      { src: '/projects/greenstock/landing.png', caption: 'Landing page — dark by default, with a manual light-mode toggle' },
       { src: '/projects/greenstock/dashboard.png', caption: 'Dashboard — stock trend chart and recent supplier feed imports' },
       { src: '/projects/greenstock/products.png', caption: 'Product catalog — searchable, sortable, paginated' },
       { src: '/projects/greenstock/product-show.png', caption: 'Product detail — full inventory movement ledger' },
+      { src: '/projects/greenstock/admin.png', caption: 'Admin area — restricted stock adjustments, recorded on the same ledger' },
     ],
     highlights: [
       {
@@ -33,11 +36,20 @@ export const projects = [
           'testable and does exactly one job.',
       },
       {
-        title: 'Queue-ready by design',
+        title: 'Restricted admin controls',
         body:
-          'The import runs as a queued job wired into the Laravel scheduler as a ' +
-          'simulated nightly sync. It ships on the sync driver for zero-setup demoing, ' +
-          'but swapping to database/redis makes it genuinely async with no code changes.',
+          'A single admin-flagged account can issue manual stock adjustments with a ' +
+          'required reason. Every adjustment lands on the same movement ledger as ' +
+          'automated imports, so manual corrections stay part of the audit trail instead ' +
+          'of bypassing it.',
+      },
+      {
+        title: 'Actually deployed, not just runnable',
+        body:
+          'Docker multi-stage build (Composer → Vite asset build → PHP runtime), running ' +
+          "on Render's free tier against a separate managed Postgres database (Neon) so " +
+          "data survives container restarts. Chosen deliberately over a localhost-only " +
+          'demo — it forced real decisions about trusted proxies, env config, and cold starts.',
       },
     ],
   },

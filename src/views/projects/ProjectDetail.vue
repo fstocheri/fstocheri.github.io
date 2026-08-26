@@ -31,7 +31,15 @@ if (!project.value) {
         </div>
 
         <div class="actions">
-          <a :href="project.repoUrl" target="_blank" rel="noreferrer" class="btn btn-primary">
+          <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" rel="noreferrer" class="btn btn-primary">
+            View live demo
+          </a>
+          <a
+            :href="project.repoUrl"
+            target="_blank"
+            rel="noreferrer"
+            :class="project.liveUrl ? 'btn btn-secondary' : 'btn btn-primary'"
+          >
             View on GitHub
           </a>
         </div>
@@ -113,6 +121,9 @@ if (!project.value) {
 }
 
 .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
   margin-top: var(--space-6);
 }
 
