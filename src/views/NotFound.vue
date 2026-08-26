@@ -1,7 +1,7 @@
 <template>
   <section class="section not-found">
     <div class="container">
-      <p class="eyebrow">404</p>
+      <p class="kicker">404</p>
       <h1>Page not found</h1>
       <p class="lede">That page doesn't exist — try the nav above.</p>
       <RouterLink to="/" class="btn btn-primary">Back home</RouterLink>

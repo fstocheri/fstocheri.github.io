@@ -19,10 +19,10 @@ if (!project.value) {
 
 <template>
   <div v-if="project">
-    <section class="section">
+    <section class="section section--intro">
       <div class="container">
         <RouterLink to="/projects" class="back-link">&larr; All projects</RouterLink>
-        <p class="eyebrow">Project</p>
+        <p class="kicker">Project</p>
         <h1>{{ project.name }}</h1>
         <p class="lede">{{ project.description }}</p>
 
@@ -40,14 +40,20 @@ if (!project.value) {
 
     <RevealSection v-if="project.terminalScript" class="section section--tight">
       <div class="container">
-        <h2>See it run</h2>
+        <div class="section-head">
+          <span class="section-head__index">§ Demo</span>
+          <h2>See it run</h2>
+        </div>
         <TerminalDemo :script="project.terminalScript" />
       </div>
     </RevealSection>
 
     <RevealSection v-if="project.screenshots" class="section section--tight">
       <div class="container">
-        <h2>Screenshots</h2>
+        <div class="section-head">
+          <span class="section-head__index">§ Screens</span>
+          <h2>Screenshots</h2>
+        </div>
         <div class="gallery">
           <figure v-for="shot in project.screenshots" :key="shot.src">
             <img :src="shot.src" :alt="shot.caption" loading="lazy" />
@@ -59,7 +65,10 @@ if (!project.value) {
 
     <RevealSection class="section section--tight">
       <div class="container">
-        <h2>Design decisions</h2>
+        <div class="section-head">
+          <span class="section-head__index">§ Notes</span>
+          <h2>Design decisions</h2>
+        </div>
         <div class="highlights">
           <div v-for="item in project.highlights" :key="item.title" class="highlight">
             <h3>{{ item.title }}</h3>
@@ -72,9 +81,14 @@ if (!project.value) {
 </template>
 
 <style scoped>
+.section--intro {
+  padding-bottom: var(--space-6);
+}
+
 .back-link {
   display: inline-block;
   color: var(--color-text-muted);
+  font-family: var(--font-mono);
   text-decoration: none;
   font-size: var(--text-sm);
   margin-bottom: var(--space-5);
@@ -94,7 +108,7 @@ if (!project.value) {
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--space-3);
   margin-top: var(--space-5);
 }
 
@@ -106,32 +120,26 @@ if (!project.value) {
   padding-top: 0;
 }
 
-h2 {
-  font-size: var(--text-2xl);
-  margin-bottom: var(--space-6);
-}
-
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-5);
+  gap: var(--space-6);
 }
 
 .gallery figure {
   margin: 0;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--color-surface);
+  border-top: 2px solid var(--color-text);
 }
 
 .gallery img {
   width: 100%;
   display: block;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .gallery figcaption {
-  padding: var(--space-3) var(--space-4);
+  padding-block: var(--space-3);
+  font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--color-text-muted);
 }
@@ -139,19 +147,19 @@ h2 {
 .highlights {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-5);
+  gap: var(--space-6);
 }
 
 .highlight {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-4);
 }
 
 .highlight h3 {
   font-size: var(--text-base);
   margin-bottom: var(--space-2);
+  font-family: var(--font-mono);
+  font-weight: 500;
   color: var(--color-accent);
 }
 

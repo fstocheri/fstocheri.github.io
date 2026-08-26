@@ -28,24 +28,14 @@ defineProps({
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: transform var(--transition-base), box-shadow var(--transition-base),
-    border-color var(--transition-base);
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-accent);
+  border-top: 2px solid var(--color-text);
 }
 
 .card__media {
   aspect-ratio: 16 / 10;
   background: var(--color-bg-alt);
   overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .card__media img {
@@ -53,6 +43,11 @@ defineProps({
   height: 100%;
   object-fit: cover;
   object-position: top;
+  transition: opacity var(--transition-base);
+}
+
+.card:hover .card__media img {
+  opacity: 0.85;
 }
 
 .card__media-fallback {
@@ -61,23 +56,31 @@ defineProps({
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
+  font-family: var(--font-serif);
+  font-style: italic;
   font-size: var(--text-3xl);
-  font-weight: 700;
   color: var(--color-accent);
   background: var(--color-accent-soft);
 }
 
 .card__body {
-  padding: var(--space-5);
+  padding-block: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-2);
   flex: 1;
 }
 
 .card__body h3 {
   font-size: var(--text-xl);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--transition-base);
+}
+
+.card:hover .card__body h3 {
+  text-decoration-color: var(--color-accent);
 }
 
 .card__body p {
@@ -89,6 +92,7 @@ defineProps({
 .card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--space-3);
+  margin-top: var(--space-1);
 }
 </style>

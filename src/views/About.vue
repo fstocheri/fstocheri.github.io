@@ -5,19 +5,22 @@ import RevealSection from '../components/RevealSection.vue';
 
 <template>
  <div>
-  <section class="section">
+  <section class="section section--intro">
     <div class="container">
-      <p class="eyebrow">About</p>
+      <p class="kicker">About</p>
       <h1>Experience &amp; Background</h1>
     </div>
   </section>
 
   <RevealSection class="section section--tight">
     <div class="container">
-      <h2>Experience</h2>
+      <div class="section-head">
+        <span class="section-head__index">§ 01</span>
+        <h2>Experience</h2>
+      </div>
       <ol class="timeline">
-        <li v-for="job in experience" :key="job.company" class="timeline__item">
-          <div class="timeline__marker" />
+        <li v-for="(job, index) in experience" :key="job.company" class="timeline__item">
+          <span class="timeline__number">{{ String(index + 1).padStart(2, '0') }}</span>
           <div class="timeline__content">
             <div class="timeline__heading">
               <h3>{{ job.role }}</h3>
@@ -35,12 +38,14 @@ import RevealSection from '../components/RevealSection.vue';
 
   <RevealSection class="section section--tight">
     <div class="container">
-      <h2>Education</h2>
-      <div class="edu-grid">
-        <div v-for="item in education" :key="item.degree" class="edu-card">
+      <div class="section-head">
+        <span class="section-head__index">§ 02</span>
+        <h2>Education</h2>
+      </div>
+      <div class="edu-list">
+        <div v-for="item in education" :key="item.degree" class="edu-item">
           <h3>{{ item.degree }}</h3>
-          <p class="edu-card__school">{{ item.school }}</p>
-          <span class="tag">{{ item.note }}</span>
+          <p class="edu-item__school">{{ item.school }} — {{ item.note }}</p>
         </div>
       </div>
     </div>
@@ -48,16 +53,17 @@ import RevealSection from '../components/RevealSection.vue';
 
   <RevealSection class="section section--tight">
     <div class="container">
-      <h2>Skills</h2>
+      <div class="section-head">
+        <span class="section-head__index">§ 03</span>
+        <h2>Skills</h2>
+      </div>
       <div class="bars">
         <div v-for="skill in skillBars" :key="skill.name" class="bar">
-          <div class="bar__label">
-            <span>{{ skill.name }}</span>
-            <span>{{ skill.years }}+ yrs</span>
-          </div>
+          <span class="bar__name">{{ skill.name }}</span>
           <div class="bar__track">
             <div class="bar__fill" :style="{ width: `${(skill.years / 10) * 100}%` }" />
           </div>
+          <span class="bar__years">{{ skill.years }}+ yrs</span>
         </div>
       </div>
 
@@ -75,13 +81,12 @@ import RevealSection from '../components/RevealSection.vue';
 </template>
 
 <style scoped>
-.section--tight {
-  padding-block: var(--space-7);
+.section--intro {
+  padding-bottom: var(--space-6);
 }
 
-h2 {
-  font-size: var(--text-2xl);
-  margin-bottom: var(--space-6);
+.section--tight {
+  padding-block: var(--space-7);
 }
 
 .timeline {
@@ -90,34 +95,24 @@ h2 {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-7);
-  position: relative;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 5px;
-  top: 6px;
-  bottom: 6px;
-  width: 2px;
-  background: var(--color-border);
 }
 
 .timeline__item {
-  position: relative;
-  padding-left: var(--space-6);
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: var(--space-5);
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--color-border);
 }
 
-.timeline__marker {
-  position: absolute;
-  left: 0;
-  top: 6px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 0 4px var(--color-accent-soft);
+.timeline__item:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.timeline__number {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
 }
 
 .timeline__heading {
@@ -139,7 +134,8 @@ h2 {
 
 .timeline__company {
   color: var(--color-accent);
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
   margin-block: var(--space-1) var(--space-3);
 }
 
@@ -152,60 +148,72 @@ h2 {
   gap: var(--space-2);
 }
 
-.edu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--space-5);
-}
-
-.edu-card {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-  background: var(--color-surface);
+.edu-list {
   display: flex;
   flex-direction: column;
+}
+
+.edu-item {
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
   gap: var(--space-2);
 }
 
-.edu-card h3 {
-  font-size: var(--text-base);
+.edu-item:last-child {
+  border-bottom: 1px solid var(--color-border);
 }
 
-.edu-card__school {
+.edu-item h3 {
+  font-size: var(--text-base);
+  font-weight: 500;
+}
+
+.edu-item__school {
   color: var(--color-text-muted);
-  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
 }
 
 .bars {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-4);
   max-width: 640px;
   margin-bottom: var(--space-7);
 }
 
-.bar__label {
-  display: flex;
-  justify-content: space-between;
+.bar {
+  display: grid;
+  grid-template-columns: 110px 1fr 60px;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.bar__name {
   font-size: var(--text-sm);
   font-weight: 600;
-  margin-bottom: var(--space-2);
 }
 
 .bar__track {
-  height: 10px;
-  border-radius: 999px;
-  background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
-  overflow: hidden;
+  height: 2px;
+  background: var(--color-border);
 }
 
 .bar__fill {
   height: 100%;
   background: var(--color-accent);
-  border-radius: inherit;
   transition: width 900ms ease;
+}
+
+.bar__years {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: right;
 }
 
 .tag-groups {
@@ -215,16 +223,18 @@ h2 {
 }
 
 .tag-group h3 {
-  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text-muted);
   margin-bottom: var(--space-3);
+  font-weight: 500;
 }
 
 .tag-group__items {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 </style>

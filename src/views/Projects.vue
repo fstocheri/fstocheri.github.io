@@ -8,7 +8,7 @@ import RevealSection from '../components/RevealSection.vue';
  <div>
   <section class="section">
     <div class="container">
-      <p class="eyebrow">Projects</p>
+      <p class="kicker">Projects</p>
       <h1>Things I've built</h1>
       <p class="lede">
         A couple of from-scratch demos, each picked to show a different part of the stack.

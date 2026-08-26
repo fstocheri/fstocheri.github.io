@@ -11,8 +11,7 @@ const { theme, toggleTheme } = useTheme();
     :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
     @click="toggleTheme"
   >
-    <span v-if="theme === 'dark'">☀️</span>
-    <span v-else>🌙</span>
+    {{ theme === 'dark' ? 'Dark' : 'Light' }}
   </button>
 </template>
 
@@ -21,18 +20,20 @@ const { theme, toggleTheme } = useTheme();
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 999px;
+  padding: var(--space-2) var(--space-3);
   border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: transparent;
+  color: var(--color-text-muted);
   cursor: pointer;
-  font-size: 1.1rem;
-  transition: border-color var(--transition-base), transform var(--transition-base);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: border-color var(--transition-base), color var(--transition-base);
 }
 
 .theme-toggle:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-1px);
+  border-color: var(--color-text);
+  color: var(--color-text);
 }
 </style>

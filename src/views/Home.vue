@@ -12,36 +12,36 @@ const featured = projects.slice(0, 2);
  <div>
   <section class="hero section">
     <div class="container hero__inner">
-      <p class="eyebrow">Hi, I'm</p>
+      <p class="kicker">Portfolio — 2026</p>
       <h1>{{ profile.name }}</h1>
       <p class="hero__title">{{ profile.title }}</p>
       <p class="hero__summary">{{ profile.summary }}</p>
 
       <div class="hero__actions">
         <RouterLink to="/projects" class="btn btn-primary">View Projects</RouterLink>
-        <a class="btn btn-secondary" href="/resume-forrest-tocheri.pdf" download>Download Resume</a>
-        <RouterLink to="/contact" class="btn btn-secondary">Contact</RouterLink>
+        <a class="hero__link" href="/resume-forrest-tocheri.pdf" download>Download Résumé ↓</a>
+        <RouterLink to="/contact" class="hero__link">Contact →</RouterLink>
       </div>
 
-      <div class="hero__stack">
-        <span v-for="item in stack" :key="item" class="tag">{{ item }}</span>
-      </div>
+      <p class="hero__stack">
+        <span v-for="(item, i) in stack" :key="item">{{ item }}<template v-if="i < stack.length - 1"> / </template></span>
+      </p>
     </div>
   </section>
 
   <RevealSection class="section">
     <div class="container">
-      <h2>Years by the numbers</h2>
-      <p class="section__lede">Straight from the resume — actual years, not invented percentages.</p>
+      <div class="section-head">
+        <span class="section-head__index">§ 01 — By the numbers</span>
+        <h2>Years, not percentages</h2>
+      </div>
       <div class="bars">
         <div v-for="skill in skillBars" :key="skill.name" class="bar">
-          <div class="bar__label">
-            <span>{{ skill.name }}</span>
-            <span>{{ skill.years }}+ yrs</span>
-          </div>
+          <span class="bar__name">{{ skill.name }}</span>
           <div class="bar__track">
             <div class="bar__fill" :style="{ width: `${(skill.years / 10) * 100}%` }" />
           </div>
+          <span class="bar__years">{{ skill.years }}+ yrs</span>
         </div>
       </div>
     </div>
@@ -49,9 +49,12 @@ const featured = projects.slice(0, 2);
 
   <RevealSection class="section">
     <div class="container">
-      <div class="section__header">
-        <h2>Featured Projects</h2>
-        <RouterLink to="/projects" class="section__link">See all →</RouterLink>
+      <div class="section-head section-head--split">
+        <div>
+          <span class="section-head__index">§ 02 — Selected work</span>
+          <h2>Featured Projects</h2>
+        </div>
+        <RouterLink to="/projects" class="hero__link">See all →</RouterLink>
       </div>
       <div class="grid">
         <ProjectCard v-for="project in featured" :key="project.slug" :project="project" />
@@ -63,106 +66,110 @@ const featured = projects.slice(0, 2);
 
 <style scoped>
 .hero {
-  padding-top: var(--space-9);
-  padding-bottom: var(--space-9);
-  text-align: center;
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
 }
 
 .hero__inner {
-  max-width: 720px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-3);
+  max-width: 680px;
 }
 
 .hero h1 {
   font-size: var(--text-4xl);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  line-height: 1.05;
 }
 
 .hero__title {
-  font-size: var(--text-xl);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
   color: var(--color-accent);
-  font-weight: 600;
+  margin-top: var(--space-3);
 }
 
 .hero__summary {
   color: var(--color-text-muted);
   font-size: var(--text-lg);
   line-height: 1.6;
+  margin-top: var(--space-5);
+  max-width: 56ch;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
-  justify-content: center;
-  margin-top: var(--space-3);
+  align-items: center;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.hero__link {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--transition-base);
+}
+
+.hero__link:hover {
+  text-decoration-color: var(--color-accent);
 }
 
 .hero__stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  justify-content: center;
-  margin-top: var(--space-5);
-}
-
-.section__lede {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
   color: var(--color-text-muted);
-  margin-top: var(--space-2);
-  margin-bottom: var(--space-6);
+  margin-top: var(--space-7);
+  line-height: 1.8;
 }
 
-.section__header {
+.section-head--split {
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: var(--space-6);
-}
-
-.section__link {
-  color: var(--color-accent);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: var(--text-sm);
+  gap: var(--space-4);
 }
 
 .bars {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-4);
   max-width: 640px;
 }
 
-.bar__label {
-  display: flex;
-  justify-content: space-between;
+.bar {
+  display: grid;
+  grid-template-columns: 110px 1fr 60px;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.bar__name {
   font-size: var(--text-sm);
   font-weight: 600;
-  margin-bottom: var(--space-2);
 }
 
 .bar__track {
-  height: 10px;
-  border-radius: 999px;
-  background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
-  overflow: hidden;
+  height: 2px;
+  background: var(--color-border);
 }
 
 .bar__fill {
   height: 100%;
   background: var(--color-accent);
-  border-radius: inherit;
   transition: width 900ms ease;
+}
+
+.bar__years {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: right;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-5);
+  gap: var(--space-6);
 }
 </style>

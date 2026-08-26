@@ -108,10 +108,8 @@ onUnmounted(() => {
 <style scoped>
 .terminal {
   background: #0b1020;
-  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-text);
 }
 
 .terminal__bar {

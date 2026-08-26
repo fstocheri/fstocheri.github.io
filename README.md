@@ -6,11 +6,13 @@ My personal portfolio — a Vue 3 SPA presenting my resume and projects interact
 ## Stack
 
 - Vue 3 + Vite + vue-router (SPA, no backend — deployed as static files)
-- Hand-written CSS with a small design-token system (`src/styles/tokens.css`), light/dark
-  theme via CSS custom properties and `localStorage`
+- Hand-written CSS with a small design-token system (`src/styles/tokens.css`): a warm
+  paper/ink palette (not the default indigo-on-white), a serif display face (Fraunces) paired
+  with system-ui body text, sharp corners and hairline rules instead of rounded cards and
+  drop shadows — a deliberate move away from the generic "AI-template" SaaS look
 - No animation library — a tiny `IntersectionObserver`-based composable
-  (`src/composables/useInView.js`) drives scroll-reveal, and `TerminalDemo.vue` hand-rolls a
-  typing effect for the TaskMan project page
+  (`src/composables/useInView.js`) drives a restrained opacity-only scroll-reveal, and
+  `TerminalDemo.vue` hand-rolls a typing effect for the TaskMan project page
 
 ## Structure
 

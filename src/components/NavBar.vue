@@ -56,22 +56,24 @@ function closeMenu() {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border-bottom: 2px solid var(--color-text);
 }
 
 .nav__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: var(--space-3);
+  padding-block: var(--space-4);
 }
 
 .nav__brand {
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
   text-decoration: none;
   font-size: var(--text-lg);
+  color: var(--color-text);
 }
 
 .nav__links {
@@ -82,14 +84,19 @@ function closeMenu() {
 .nav__link {
   text-decoration: none;
   color: var(--color-text-muted);
-  font-weight: 500;
-  font-size: var(--text-sm);
-  transition: color var(--transition-base);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: var(--text-xs);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color var(--transition-base), border-color var(--transition-base);
 }
 
 .nav__link:hover,
 .nav__link.router-link-exact-active {
-  color: var(--color-accent);
+  color: var(--color-text);
+  border-color: var(--color-accent);
 }
 
 .nav__actions {
@@ -108,7 +115,6 @@ function closeMenu() {
   justify-content: center;
   background: transparent;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
   cursor: pointer;
 }
 
@@ -127,7 +133,7 @@ function closeMenu() {
     flex-direction: column;
     gap: 0;
     background: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 2px solid var(--color-text);
     max-height: 0;
     overflow: hidden;
     transition: max-height var(--transition-base);
@@ -140,6 +146,7 @@ function closeMenu() {
   .nav__link {
     padding: var(--space-4) var(--space-5);
     border-top: 1px solid var(--color-border);
+    border-bottom: none;
   }
 
   .nav__burger {
