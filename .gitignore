@@ -3,6 +3,9 @@ dist
 dist-ssr
 *.local
 
+# Fetched at build time by scripts/fetch-project-data.mjs — never committed.
+src/data/generated/
+
 .vscode/*
 !.vscode/extensions.json
 .idea
