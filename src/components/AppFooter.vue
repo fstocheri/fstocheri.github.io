@@ -7,7 +7,7 @@ import { profile } from '../data/resume';
     <div class="container footer__inner">
       <p class="footer__mono">© {{ new Date().getFullYear() }} — {{ profile.name }}</p>
       <div class="footer__links">
-        <a href="https://github.com/ftocheri" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/fstocheri" target="_blank" rel="noreferrer">GitHub</a>
         <a :href="`mailto:${profile.email}`">Email</a>
       </div>
     </div>

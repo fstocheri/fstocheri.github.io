@@ -26,7 +26,7 @@ const projectBases = [
         'Laravel ETL pipeline, database schema design, and a Vue 3 + Inertia front end, ' +
         'end to end — deployed as a real, publicly reachable demo rather than a localhost-only project.',
       tech: ['Laravel', 'PHP', 'Vue 3', 'Inertia.js', 'PostgreSQL', 'Chart.js', 'Docker'],
-      repoUrl: 'https://github.com/ftocheri/greenstock',
+      repoUrl: 'https://github.com/fstocheri/greenstock',
       liveUrl: 'https://greenstock-ztvq.onrender.com',
       highlights: [
         {
@@ -82,7 +82,7 @@ const projectBases = [
         'separate React + TypeScript SPA, deployed to two different platforms and talking ' +
         'cross-origin over a bearer token.',
       tech: ['Laravel', 'PHP', 'React', 'TypeScript', 'PostgreSQL', 'TanStack Query', 'Docker'],
-      repoUrl: 'https://github.com/ftocheri/throughline',
+      repoUrl: 'https://github.com/fstocheri/throughline',
       liveUrl: 'https://throughline-seven-theta.vercel.app',
       highlights: [
         {
@@ -132,7 +132,7 @@ const projectBases = [
       '(models / repository / service / CLI), LINQ, JSON persistence, custom exceptions, ' +
       'and unit tests — nothing more than that, on purpose.',
     tech: ['C#', '.NET 10', 'xUnit', 'LINQ'],
-    repoUrl: 'https://github.com/ftocheri/taskman',
+    repoUrl: 'https://github.com/fstocheri/taskman',
     thumbnail: null,
     highlights: [
       {

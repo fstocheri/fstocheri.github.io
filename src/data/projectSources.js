@@ -4,6 +4,6 @@
 // this file, adding a base entry in projects.js, and adding a notify-portfolio CI job to the
 // new repo itself — see README.md's "Adding a new synced project" section.
 export const PROJECT_SOURCES = [
-  { slug: 'greenstock', repo: 'ftocheri/greenstock' },
-  { slug: 'throughline', repo: 'ftocheri/throughline' },
+  { slug: 'greenstock', repo: 'fstocheri/greenstock' },
+  { slug: 'throughline', repo: 'fstocheri/throughline' },
 ];

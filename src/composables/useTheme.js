@@ -1,6 +1,6 @@
 import { ref, watchEffect } from 'vue';
 
-const STORAGE_KEY = 'ftocheri-theme';
+const STORAGE_KEY = 'fstocheri-theme';
 
 const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
 const stored = localStorage.getItem(STORAGE_KEY);

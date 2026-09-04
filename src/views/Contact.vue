@@ -4,7 +4,7 @@ import RevealSection from '../components/RevealSection.vue';
 
 const links = [
   { label: 'Email', value: profile.email, href: `mailto:${profile.email}` },
-  { label: 'GitHub', value: 'github.com/ftocheri', href: 'https://github.com/ftocheri', external: true },
+  { label: 'GitHub', value: 'github.com/fstocheri', href: 'https://github.com/fstocheri', external: true },
   { label: 'Résumé', value: 'Download PDF', href: '/resume-forrest-tocheri.pdf', download: true },
 ];
 </script>

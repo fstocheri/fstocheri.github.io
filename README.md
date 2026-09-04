@@ -1,7 +1,7 @@
-# ftocheri.github.io
+# fstocheri.github.io
 
 My personal portfolio — a Vue 3 SPA presenting my resume and projects interactively. Live at
-[ftocheri.github.io](https://ftocheri.github.io).
+[fstocheri.github.io](https://fstocheri.github.io).
 
 ## Stack
 
