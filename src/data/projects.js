@@ -124,6 +124,45 @@ const projectBases = [
     synced: throughlineSynced,
   },
   {
+    slug: 'date-night-dles',
+    name: 'Date Night Dles',
+    pitch: 'A six-game daily puzzle platform on a shared React/TypeScript engine, generated and deployed by CI every night.',
+    description:
+      'A curated collection of daily "–dle" guessing games (movies, TV, songs, artists, and ' +
+      'trivia) built on one shared TypeScript/React engine, with a landing page showing the ' +
+      "night's lineup and per-game stats. New puzzles are generated, committed, built, and " +
+      'deployed automatically every day with no manual step.',
+    tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'GitHub Actions', 'GitHub Pages'],
+    repoUrl: 'https://github.com/fstocheri/date-night-dles',
+    liveUrl: 'https://fstocheri.github.io/date-night-dles/',
+    thumbnail: null,
+    highlights: [
+      {
+        title: 'One engine, drop-in games',
+        body:
+          'All six games share a single engine plus a per-game config module and a registry — ' +
+          'adding a new game is a matter of dropping in files, not forking the core. Answers ' +
+          'are stored as SHA-256 hashes and only one day of puzzles is published ahead, since ' +
+          'the deployed files are world-readable.',
+      },
+      {
+        title: 'Fully automated daily content',
+        body:
+          'A scheduled GitHub Actions workflow generates the day\'s puzzles from five external ' +
+          'APIs (TMDB, Deezer, MusicBrainz, Wikidata, OpenTDB) with caching and rate limiting, ' +
+          'commits the data back to the repo, builds, and deploys to GitHub Pages — end to end, ' +
+          'unattended.',
+      },
+      {
+        title: 'Optional cross-device sync',
+        body:
+          'Progress and stats live in localStorage by default, with an optional Supabase ' +
+          '(PostgreSQL) sync layer behind row-level security so a shared login can pick up ' +
+          'streaks across devices, resolving conflicts in favor of the furthest-along copy.',
+      },
+    ],
+  },
+  {
     slug: 'taskman',
     name: 'TaskMan',
     pitch: 'A small C# command-line task manager — clean layering, LINQ, and tests.',

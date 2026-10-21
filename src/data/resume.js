@@ -3,11 +3,12 @@ export const profile = {
   title: 'Full Stack Developer',
   email: 'ftocheri4@gmail.com',
   summary:
-    'Experienced developer with 5+ years of Laravel expertise and 8+ years of PHP and ' +
-    'JavaScript development. Strong background in front-end development including ' +
-    'HTML/CSS, Vue, and React. Proven track record of building and maintaining ' +
-    'enterprise-level systems for inventory management, marketing, sales, and production ' +
-    'operations.',
+    'Full-stack developer with 8+ years building and maintaining enterprise web ' +
+    'applications in PHP/Laravel and JavaScript, complemented by modern front-end work in ' +
+    'React, TypeScript, and Vue. Comfortable owning features end to end — from relational ' +
+    'data modeling and REST APIs to responsive, accessible interfaces and automated CI/CD ' +
+    'deployment. Self-directed and remote-ready, with a portfolio of self-built full-stack ' +
+    'projects spanning React/TypeScript, Laravel, and Salesforce.',
 };
 
 // Ordered most-recent-first for the timeline (the source resume lists Staples before
@@ -22,7 +23,7 @@ export const experience = [
       'Built a comprehensive inventory management system to track and manage company stock',
       'Created marketing and sales management tools to streamline business operations',
       'Developed an in-house production management system to optimize workflow',
-      'Implemented front-end solutions using HTML/CSS and JavaScript',
+      'Implemented front-end solutions using HTML/CSS, JavaScript, and Vue',
     ],
   },
   {
@@ -59,11 +60,6 @@ export const education = [
     school: 'Iowa State University',
     note: '2 years of study',
   },
-  {
-    degree: 'High School Diploma',
-    school: 'Marshalltown High School',
-    note: 'Graduated',
-  },
 ];
 
 // Bars show actual years (scaled against a 10-year visual max) rather than an invented
@@ -77,11 +73,26 @@ export const skillBars = [
 ];
 
 export const skillTags = {
-  Frontend: ['Vue.js', 'React'],
-  'Systems & Tools': [
-    'Inventory Management',
-    'Marketing Systems',
-    'Sales Management',
-    'Production Management',
+  Languages: ['TypeScript', 'JavaScript', 'PHP', 'C#', 'SQL', 'Apex'],
+  Frontend: ['Vue.js', 'React', 'Inertia.js', 'Tailwind CSS', 'HTML/CSS'],
+  'Backend & Data': [
+    'Laravel',
+    '.NET',
+    'Node.js',
+    'REST APIs',
+    'ETL Pipelines',
+    'PostgreSQL',
+    'MySQL',
+    'Supabase',
   ],
+  'DevOps & Tooling': [
+    'Git / GitHub',
+    'GitHub Actions',
+    'Docker',
+    'Vite',
+    'Render',
+    'Vercel',
+    'Salesforce DX',
+  ],
+  Testing: ['Vitest', 'Jest', 'React Testing Library', 'PHPUnit', 'xUnit'],
 };
