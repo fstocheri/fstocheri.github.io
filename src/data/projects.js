@@ -135,7 +135,13 @@ const projectBases = [
     tech: ['React', 'TypeScript', 'Vite', 'Supabase', 'GitHub Actions', 'GitHub Pages'],
     repoUrl: 'https://github.com/fstocheri/date-night-dles',
     liveUrl: 'https://fstocheri.github.io/date-night-dles/',
-    thumbnail: null,
+    thumbnail: '/projects/date-night-dles/landing.png',
+    screenshots: [
+      {
+        src: '/projects/date-night-dles/landing.png',
+        caption: "Landing page — tonight's lineup of six daily games on a shared engine, with per-game play state",
+      },
+    ],
     highlights: [
       {
         title: 'One engine, drop-in games',
